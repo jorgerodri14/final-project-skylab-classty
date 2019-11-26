@@ -13,7 +13,6 @@ function ClassList({ history }) {
         event.preventDefault()
         
         const {target:{ nameClass: { value: nameClass } } } = event
-        debugger
         
         event.target.nameClass.value = ''
         handleRegister(nameClass)
