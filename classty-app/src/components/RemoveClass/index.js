@@ -11,7 +11,7 @@ function RemoveClass({ history }) {
     function handleSubmit(event){
         event.stopPropagation()
         const {target:{ value: nameClass } }= event
-        debugger
+        
         handleRemoveClass(nameClass)
     }
     async function handleRemoveClass(nameClass){

@@ -5,5 +5,4 @@ module.exports = {
     unregisterType: require('./unregister-type'),
     retrieveClass: require('./retrieve-class'),
     retrieveClasses: require('./retrieve-classes')
-
 }

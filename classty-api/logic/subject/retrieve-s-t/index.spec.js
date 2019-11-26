@@ -63,9 +63,9 @@ describe('logic - retrieve subject', () => {
     })
 
     it('should succeed on correct data', async () => {
-debugger
+
         const subject = await retrieveT(idS11)
-debugger
+
         expect(subject).to.exist
         expect(subject.name).to.equal(subject.name)
 

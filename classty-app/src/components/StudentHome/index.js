@@ -16,10 +16,10 @@ function StudentHome({ history }) {
         event.preventDefault()
         history.push('/student-list')    
     }
-debugger
+
     useEffect(() => {
         (async () => {
-debugger        
+        
                 const subjects = await logic.subject.listSubjects();
                 setSubjects(subjects)
 

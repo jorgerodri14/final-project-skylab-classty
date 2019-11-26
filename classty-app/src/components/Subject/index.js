@@ -15,7 +15,7 @@ function Subject({ history }) {
         event.preventDefault()
         const { target } = event
         const value = target[0].value
-
+        event.target[0].value = ''
         handlePublish(value)
     }
 
@@ -26,7 +26,6 @@ function Subject({ history }) {
             const user = await logic.user.retrieveUser()
             setUser(user)
             await logic.post.createPost(id, value, user.name, user.surname, user.id)
-            document.getElementById('area').value = ""
             const posts = await logic.post.retrievePost(id)
             setPosts(posts)
             setUpdate(!update)
@@ -39,14 +38,14 @@ function Subject({ history }) {
         useEffect(() => {
             async function posts(){
                 const posts = await logic.post.retrievePost(id);
-                debugger
+                
                 setPosts(posts)
             }
             posts()
             async function autoUpdate() {
-                debugger
+                
                 const posts = await logic.post.retrievePost(id);
-                debugger
+                
                 setPosts(posts) 
             }
                  interval = setInterval(function(){

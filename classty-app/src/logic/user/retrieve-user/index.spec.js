@@ -23,11 +23,11 @@ describe('logic - retrieve user', () => {
         id = user.id
 
         const token = jwt.sign({ sub: id }, REACT_APP_JWT_SECRET_TEST)
-debugger
+
         logic.__userCredentials__ = token
     })
     it('should succeed on correct data', async () =>{
-        debugger
+        
             const user = await logic.user.retrieveUser()
            
                 expect(user).toBeDefined()

@@ -16,8 +16,8 @@ module.exports = function (id) {
         
         const users = await User.find({ type: 'teacher' })
         
-        return subjects.map(subject => {debugger
-            const teachers = subject.teachers.map( teacher => {debugger
+        return subjects.map(subject => {
+            const teachers = subject.teachers.map( teacher => {
                 let _users = users.find(user => user.id == teacher.toString())
                 return { name: _users.name, surname: _users.surname, id: _users._id.toString() }
             })

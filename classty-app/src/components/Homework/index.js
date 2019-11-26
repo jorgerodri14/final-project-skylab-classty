@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import logic from '../../logic'
 import Context from '../Context'
 import Header from '../Header'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 function Homework({ history }) {
 
@@ -24,9 +24,8 @@ function Homework({ history }) {
     function handleSubmit(event) {
         event.preventDefault()
         const { target: { title: { value: title }, comment: { value: comment }, date: { value: date } } } = event 
-        debugger
-        document.getElementById('area').value = ""
-        document.getElementById('ex').value = ""
+        event.target.title.value = ''
+        event.target.comment.value = ''
         handleCreateHomeWork(id, title, comment, date)
     }
 
@@ -34,9 +33,9 @@ function Homework({ history }) {
         try {
 
             await logic.homework.createHomework(id,title, comment, date)
-            debugger
+            
             const del = await logic.homework.retrieveHomeworks(id)
-            debugger
+            
             setDel(del)
             setUpdate(!update)
 
@@ -49,7 +48,7 @@ function Homework({ history }) {
     function handleNotDone(event) {
         event.preventDefault()
         const { target: { done: { value: idH } } } = event
-        debugger
+        
         handleNotDelivery(id, idH)
     }
 
@@ -58,12 +57,12 @@ function Homework({ history }) {
         try {
 
             await logic.homework.notDelivery(id, idH)
-            debugger
+            
             const notDel = await logic.homework.retrieveNotDel(id);
-            debugger
+            
             setNotDel(notDel)
             const del = await logic.homework.retrieveDel(id)
-            debugger
+            
             setDel(del)
 
         } catch (error) {
@@ -75,7 +74,7 @@ function Homework({ history }) {
     function handleDone(event) {
         event.preventDefault()
         const { target: { done: { value: idH } } } = event
-        debugger
+        
         handleDelivery(id, idH)
     }
     async function handleDelivery(id, idH) {
@@ -83,12 +82,12 @@ function Homework({ history }) {
         try {
 
             await logic.homework.delivery(id, idH)
-            debugger
+            
             const notDel = await logic.homework.retrieveNotDel(id);
-            debugger
+            
             setNotDel(notDel)
             const del = await logic.homework.retrieveDel(id)
-            debugger
+            
             setDel(del)
 
         } catch (error) {
@@ -102,21 +101,21 @@ function Homework({ history }) {
             const user = await logic.user.retrieveUser()
             setUser(user)
             if (user && user.type == 'student') {
-                debugger
+                
                 const notDel = await logic.homework.retrieveNotDel(id);
-                debugger
+                
                 setNotDel(notDel)
                 const del = await logic.homework.retrieveDel(id)
-                debugger
+                
                 setDel(del)
-            } else {debugger
+            } else {
                 const del = await logic.homework.retrieveHomeworks(id)
-                debugger
+                
                 setDel(del)
             }
         })()
     }, [update])
-debugger
+
     return <>
         <Header />
         <main className='homework'>
@@ -126,7 +125,7 @@ debugger
                     <h2 className='ho__h2'>To-Do</h2>
                     <div className='ho__div--overflow'>
                     {notDel && notDel.length > 0 && notDel.map(({ comment, title, expiry, _id }) => {
-                        debugger
+                        
                         return <li className='ho__li' key={_id}>
                             <h3 className='ho__h3'>{title}</h3>
                             <p className='ho__p'>{comment}</p>
@@ -145,7 +144,7 @@ debugger
                 <h2 className='ho__h2'>Done</h2>
                 <div className='ho__div--overflow'>                
                 {del && del.length > 0 && del.map(({ comment, title, expiry, _id }) => {
-                    debugger
+                    
                     return <li className='ho__li' key={_id}>
                         <h3 className='ho__h3'>{title}</h3>
                         <p className='ho__p'>{comment}</p>
@@ -170,7 +169,7 @@ debugger
                  <ul className='homework__ul'>
                     
                     {del && del.length > 0 && del.map(({ comment, title, expiry, delivery }) => {
-                        debugger
+                        
                         return <li key={expiry+title} className='homework__li'>
                             <h3 className='homework__h3'>{title}</h3>
                             <p className='homework__p'>{comment}</p>

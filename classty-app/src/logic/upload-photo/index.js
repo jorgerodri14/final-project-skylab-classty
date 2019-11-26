@@ -13,7 +13,7 @@ export default function (image) {
             headers: { authorization: `bearer ${token}` },
             body: formData
         })
-        debugger
+        
         if (response.status === 200) {
             const { message } = await response.json()
         

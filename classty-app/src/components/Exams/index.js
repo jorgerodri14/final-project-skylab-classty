@@ -18,31 +18,26 @@ function Exams({ history }) {
     function handleSubmit(event) {
         event.preventDefault()
         const { target: { title: { value: title }, date: { value: date } } } = event
-        debugger
+        event.target.title.value = ''
+        event.target.date.value = ''
         handleCreateExam(title, reverse(date))
     }
 
     function handleNote(event) {
         event.preventDefault()
-        debugger
         const { target: { select: { value: naSur }, note: { value: note }, id: { value: idE } } } = event
-        debugger
         const arr = naSur.split(" ")
-        debugger
+        event.target.note.value = ''
         handleAddNote(arr[0], arr[1], note, idE)
     }
 
     async function handleAddNote(name, surname, note, idE) {
-        debugger
         await logic.exam.addNote(name, surname, note, idE, _id)
-        document.getElementById('ex').value = ''
         setUpdate(!update)
     }
 
     async function handleCreateExam(title, date) {
-        debugger
         await logic.exam.createExam(_id, title, date)
-        document.getElementById('ex').value = ''
         setUpdate(!update)
     }
     useEffect(() => {
@@ -50,17 +45,13 @@ function Exams({ history }) {
             const user = await logic.user.retrieveUser()
             setUser(user)
             if (user && user.type == 'student') {
-                debugger
-                const exams = await logic.exam.retrieveAllExams(_id);
+                        const exams = await logic.exam.retrieveAllExams(_id);
                 setExams(exams)
             } else if(user && user.type == 'teacher'){
-                debugger
-                const exams = await logic.exam.retrieveAllExamsTeacher(_id);
+                        const exams = await logic.exam.retrieveAllExamsTeacher(_id);
                 setExams(exams)
-                debugger
-                const students = await logic.exam.retrieveNotUserNoteExam(_id);
-                debugger
-                setStudents(students)
+                        const students = await logic.exam.retrieveNotUserNoteExam(_id);
+                        setStudents(students)
             }
 
         })()
@@ -102,7 +93,7 @@ function Exams({ history }) {
                                 </div>
                                 <form className='exam__form' onSubmit={handleNote}>
                                     <select className='exam__select' name="select">
-                                        {students && students.length > 0 && students.map(student =>{debugger
+                                        {students && students.length > 0 && students.map(student =>{
 
                                             return student.id == _exam._id&&
 

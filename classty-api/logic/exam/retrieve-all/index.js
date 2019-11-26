@@ -14,12 +14,12 @@ module.exports = function (id, idS) {
 
         if (!student) throw new Error(`wrong credentials`)
 
-        return subject.exams.map(_exam => {debugger
-            const user = _exam.notes.find( note => {debugger
+        return subject.exams.map(_exam => {
+            const user = _exam.notes.find( note => {
                 return note.student == idS
             })
             _exam.notes = user
-            debugger
+            
             return { _exam }
         });
 

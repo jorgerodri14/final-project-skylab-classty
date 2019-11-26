@@ -11,7 +11,7 @@ function RemoveTeacher({ history }) {
     function handleSubmit(event){
         event.stopPropagation()
         const {target:{ value: id } }= event
-        debugger
+        
         handleRemoveClass(id)
     }
     async function handleRemoveClass(id){
@@ -29,10 +29,10 @@ function RemoveTeacher({ history }) {
             
             const teachers = await logic.retrieveAll('teacher');
             setTeachers(teachers)
-debugger
+
         })()
     }, [update])
-debugger
+
     return <>
         <Header />
         <main className='remove-teacher'>
@@ -40,7 +40,7 @@ debugger
 
             <section>
                 <form className='remove-teacher__form' onChange={handleSubmit}> 
-                    {teachers && teachers.length > 0 && teachers.map(({ name, surname, id }) => {debugger
+                    {teachers && teachers.length > 0 && teachers.map(({ name, surname, id }) => {
                             
                             return<div key={id} className='remove-div'>
                             <label className='remove-teacher__label'>{name+" "+surname}</label>

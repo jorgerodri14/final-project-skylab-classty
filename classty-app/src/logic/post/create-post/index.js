@@ -12,7 +12,7 @@ export default function (idSub, value, name, surname, user) {
         surname: surname,
         message: message
     }
-debugger
+
     return (async () => {
         const response = await fetch(`${REACT_APP_API_URL}/post/${idSub}`, {
             method: 'POST',

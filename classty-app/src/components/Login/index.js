@@ -42,7 +42,7 @@ function Login({ history }) {
 
             user && (user.type == 'teacher') && history.push('/teacher-home')
 
-        } catch ({message}) {debugger
+        } catch ({message}) {
             setError(message)
         }
     }

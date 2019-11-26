@@ -8,16 +8,16 @@ function StudentList({ history }) {
     const { students, setStudents, user } = useContext(Context)
 
 
-    debugger
+    
     useEffect(() => {
         (async () => {
-            debugger
+            
             const students = await logic.retrieveAll('student');
             setStudents(students)
 
         })()
     }, [])
-debugger
+
     return <>
         <Header />
         <main>

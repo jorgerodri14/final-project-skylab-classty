@@ -3,7 +3,7 @@ const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 export default function (id) {
 
     const token = logic.__userCredentials__
-debugger
+
     return (async () => {
         const response = await fetch(`${REACT_APP_API_URL}/post/${id}`, {
             method: 'GET',
@@ -15,9 +15,9 @@ debugger
             throw Error(error)
         }
         else {
-            debugger
+            
             const post = await response.json()
-            debugger
+            
             return post.result
         }
     })()

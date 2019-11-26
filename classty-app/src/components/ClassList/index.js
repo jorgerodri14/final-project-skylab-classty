@@ -11,8 +11,11 @@ function ClassList({ history }) {
 
  function handleSubmit(event){
         event.preventDefault()
-        debugger
+        
         const {target:{ nameClass: { value: nameClass } } } = event
+        debugger
+        
+        event.target.nameClass.value = ''
         handleRegister(nameClass)
     }
     
@@ -22,8 +25,7 @@ function ClassList({ history }) {
             
             await logic.classes.registerClass(nameClass)
             setUpdate(!update)
-            document.getElementById('a').value = ''
-        }catch({message}){debugger
+        }catch({message}){
             setError(message)
         }
     }
@@ -43,7 +45,7 @@ function ClassList({ history }) {
         <section className='class-list__section'>
         <h2 className='class-list__h2'>Create Class</h2>
         <form className='class-list__form' onSubmit={handleSubmit}>
-            <input className='class-list__input' type="name" id='a' name="nameClass" placeholder="name subject"/>
+            <input className='class-list__input' type="name" name="nameClass" placeholder="name subject"/>
             <button className='class-list__button'>Submit</button>
         </form>
         {error&&<Feedback error={error}/>}

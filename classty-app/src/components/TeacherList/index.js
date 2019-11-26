@@ -9,21 +9,21 @@ function TeacherList({ history }) {
     const { teachers, setTeachers, error, setError } = useContext(Context)
     const [ update, setUpdate ] = useState(false)
     function handleSubmit(event){
+        const clear = event.target
         event.preventDefault()
         const {target:{ name: { value: name }, surname: { value: surname }, email: { value: email }, password: { value: password } } } = event
+        clear.name.value = ''
+        clear.surname.value = ''
+        clear.email.value = ''
+        clear.password.value = ''
         handleRegister(name, surname, email, password)
     }
     
     async function handleRegister(name, surname, email, password){
 
         try{
-            debugger
+            
             await logic.user.registerUser(name, surname, email, password, 'teacher')
-            console.log('register with success')
-            document.getElementById('clear').value=""
-            document.getElementById('clear1').value=""
-            document.getElementById('clear2').value=""
-            document.getElementById('clear3').value=""
             setUpdate(!update)
         }catch({message}){
             
@@ -35,10 +35,10 @@ function TeacherList({ history }) {
         history.go(-1)
     }
 
-    debugger
+    
     useEffect(() => {
         (async () => {
-            debugger
+            
             const teachers = await logic.retrieveAll('teacher');
             setTeachers(teachers)
 

@@ -4,7 +4,7 @@ export default function (idSub) {
 
     const token = logic.__userCredentials__
     let exam = []
-    debugger
+    
     return (async () => {
 
         //RETURN EXAMS FOR SUBJECT
@@ -21,7 +21,7 @@ export default function (idSub) {
             const a = await exams.json()
             exam = a.result
         }
-        debugger
+        
         //RETURN ALL STUDENTS THAT ITS IN SUBJECT
         const students = await fetch(`${REACT_APP_API_URL}/subjects/${idSub}`, {
             method: 'GET',
@@ -33,18 +33,18 @@ export default function (idSub) {
             throw Error(error)
         }
         else {
-            debugger
+            
             const { result } = await students.json()
-            debugger
+            
 
-            return exam.map(_exam => {debugger
+            return exam.map(_exam => {
                 const student = []
-                result.forEach(res => {debugger
+                result.forEach(res => {
                     let _users = _exam.notes.find(note => note.student == res.id)
-                    debugger
+                    
                     if(!_users)
                     student.push({ name: res.name, surname: res.surname, id: res.id })
-                debugger
+                
                     })
                 
                 return { title: _exam.title, id: _exam._id, user: student }

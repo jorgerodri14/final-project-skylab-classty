@@ -8,24 +8,24 @@ module.exports = function (id, userId) {
     return (async () => {
 
         const subject = await Subject.findById(id)
-        debugger
+        
         if (!subject) throw new Error(`wrong student`)
 
         const student = await User.findById(userId)
-        debugger
+        
         if (!student) throw new Error(`wrong student`)
 
         let result = subject.homeworks.map(_homework => {
-            debugger
-            let work = _homework.delivery.find( delev => { debugger
+            
+            let work = _homework.delivery.find( delev => { 
                 return userId == delev.student.toString()
             })
             if(!work) {return _homework}
         })
         
-        debugger
+        
         result.forEach(res => res===undefined ? null : rest.push(res) )
-        debugger
+        
         return rest
     })()
 }

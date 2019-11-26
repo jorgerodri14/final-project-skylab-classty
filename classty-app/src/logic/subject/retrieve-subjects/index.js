@@ -6,7 +6,7 @@ export default function () {
 
 
     return (async () => {
-        debugger
+        
         const response = await fetch(`${REACT_APP_API_URL}/subjects`, {
             method: 'GET',
             headers: {'authorization': `bearer ${token}` }
@@ -18,9 +18,9 @@ export default function () {
         }
         else {
             const a = await response.json()
-            debugger
+            
             const result = a.result
-            debugger
+            
             return result
         }
             

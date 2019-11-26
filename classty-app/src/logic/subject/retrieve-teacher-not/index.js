@@ -12,7 +12,7 @@ export default function () {
     let stu = []
 
     return (async () => {
-        debugger
+        
         const subjects = await fetch(`${REACT_APP_API_URL}/subjects`, {
             method: 'GET',
             headers: {'authorization': `bearer ${token}` }
@@ -24,9 +24,9 @@ export default function () {
         }
         else {
             const a = await subjects.json()
-            debugger
+            
             sub = a.result
-            debugger
+            
         }
         const teachers = await fetch(`${REACT_APP_API_URL}/users-all/teacher`, {
             method: 'GET',
@@ -38,11 +38,11 @@ export default function () {
             throw Error(error)
         }
         else {
-            debugger
+            
             const a = await teachers.json()
-            debugger
+            
             tech = a._user
-          debugger
+          
 
         }
         const students = await fetch(`${REACT_APP_API_URL}/users-all/student`, {
@@ -55,11 +55,11 @@ export default function () {
             throw Error(error)
         }
         else {
-            debugger
+            
             const a = await students.json()
-            debugger
+            
             stu = a._user
-          debugger
+          
 
         }
         return sub.map(s => {

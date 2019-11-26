@@ -10,7 +10,7 @@ function SubjectTeacherList() {
     
     useEffect(() => {
         (async () => {
-            debugger
+            
             const teachers = await logic.subject.retrieveTeachersSubjects();
             setTeachers(teachers)
             
@@ -23,7 +23,7 @@ function SubjectTeacherList() {
 
             <section>
                 <ul className='stl__ul'>
-                    {teachers && teachers.length > 0 && teachers.map(teacher => {debugger
+                    {teachers && teachers.length > 0 && teachers.map(teacher => {
                         return<div key={teacher.title}>
                        {teacher.title && <li key={teacher.title} className='stl__li'>
                            {teacher.title && <h3 className='stl__h3'>{teacher.title}</h3>}

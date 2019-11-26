@@ -30,7 +30,7 @@ function Register({ history }) {
             setError(undefined)
             history.push('/login')
         } catch ({message}) {
-debugger
+
             setError(message)
         }
     }

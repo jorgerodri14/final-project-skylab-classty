@@ -43,7 +43,7 @@ function Profile({ history }) {
 
     useEffect(() => {
         (async () => {
-            debugger
+            
             const _id = history.location.pathname.split('/').pop()
 
             if (_id == '1') {

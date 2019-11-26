@@ -13,11 +13,11 @@ function SubjectList({ history }) {
   
     function handleSubmit(event) {
         event.preventDefault()
-        debugger
+        
         const { target: { idSub: { value: id }, student: {value: opt} , select: { value: naSur } } } = event
-        debugger
+        
         const arr = naSur.split(" ")
-        debugger
+        
         if (opt=='1'){ 
             handleAddStudent(id, arr[0], arr[1])
         }else{ 
@@ -28,9 +28,9 @@ function SubjectList({ history }) {
     async function handleAddStudent(name, surname, idSub) {
 
         try {
-            debugger
+            
             await logic.subject.addStudent(name, surname, idSub)
-            debugger
+            
             setUpdate(!update)
         } catch (error) {
 
@@ -41,9 +41,9 @@ function SubjectList({ history }) {
     async function handleAddTeacher(name, surname, idSub) {
 
         try {
-            debugger
+            
             await logic.subject.addTeacher(name, surname, idSub)
-            debugger
+            
             setUpdate(!update)
         } catch (error) {
 
@@ -52,9 +52,9 @@ function SubjectList({ history }) {
     }
     useEffect(() => {
         (async () => {
-            debugger
+            
             const users = await logic.subject.retrieveTeacherNotInscrit()
-            debugger
+            
             setUser(users)
 
         })()

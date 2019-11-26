@@ -13,7 +13,7 @@ module.exports = function (id, idS) {
         const teacher = await User.findOne({_id: idS})
 
         if (!teacher) throw new Error(`wrong credentials`)
-debugger
+
         return subject.exams
 
     })()

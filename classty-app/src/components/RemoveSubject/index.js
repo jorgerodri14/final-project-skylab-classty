@@ -12,7 +12,7 @@ function RemoveSubject({ history }) {
     function handleSubmit(event){
         event.stopPropagation()
         const {target:{ value: name } }= event
-        debugger
+        
         handleRemoveSubject(name)
     }
     async function handleRemoveSubject(name){
@@ -30,17 +30,17 @@ function RemoveSubject({ history }) {
             
             const subjects = await logic.subject.retrieveSubjects();
             setSubjects(subjects)
-debugger
+
         })()
     }, [update])
-debugger
+
     return <>
         <Header />
         <main className='remove-subject'>
         <h2 className='remove-subject__h2'>Click to remove class</h2>
             <section>
                 <form className='remove-subject__form' onChange={handleSubmit}> 
-                    {subjects && subjects.length > 0 && subjects.map(({ name }) => {debugger
+                    {subjects && subjects.length > 0 && subjects.map(({ name }) => {
                             
                             return<div key={name+Math.random()} className='remove-subject__div'>
                             <label className='remove-subject__label'>{name}</label>
